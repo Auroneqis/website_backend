@@ -26,6 +26,7 @@ public class ContactMessageServiceImpl implements ContactMessageService {
         ContactMessage entity = new ContactMessage();
         entity.setName(dto.getName());
         entity.setEmail(dto.getEmail());
+        entity.setPhoneNumber(dto.getPhoneNumber());
         entity.setService(dto.getService());
         entity.setMessage(dto.getMessage());
 

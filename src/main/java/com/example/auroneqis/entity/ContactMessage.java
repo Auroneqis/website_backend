@@ -1,8 +1,20 @@
 package com.example.auroneqis.entity;
 
-import com.example.auroneqis.enums.ServiceType;
-import jakarta.persistence.*;
 import java.time.LocalDateTime;
+
+import com.example.auroneqis.enums.ServiceType;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "contact_messages")
@@ -15,6 +27,10 @@ public class ContactMessage {
     private String name;
 
     private String email;
+    
+    @NotBlank(message = "Phone number is required")
+    @Pattern(regexp = "^[0-9]{10}$", message = "Phone number must be 10 digits")
+    private String phoneNumber;
 
     @Enumerated(EnumType.STRING)
     private ServiceType service;
@@ -76,6 +92,15 @@ public class ContactMessage {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	
 
     
 }

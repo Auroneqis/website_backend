@@ -25,13 +25,13 @@ public class EmailServiceImpl implements EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
 
         message.setTo(adminEmail);
-
         message.setSubject("New Contact Form Submission");
 
         message.setText(
                 "New Contact Message:\n\n" +
                 "Name: " + dto.getName() + "\n" +
                 "Email: " + dto.getEmail() + "\n" +
+                "Phone Number: " + dto.getPhoneNumber() + "\n" +
                 "Service: " + dto.getService() + "\n\n" +
                 "Message:\n" + dto.getMessage()
         );

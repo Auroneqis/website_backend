@@ -16,6 +16,8 @@ public class ContactMessageDTO {
     @NotNull(message = "Please select a service")
     private ServiceType service;
 
+    private String phoneNumber;
+    
     @NotBlank
     private String message;
 
@@ -49,6 +51,14 @@ public class ContactMessageDTO {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
     
