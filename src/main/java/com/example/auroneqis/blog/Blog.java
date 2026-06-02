@@ -21,6 +21,8 @@ public class Blog {
 
     @Column(columnDefinition = "TEXT")
     private String content;
+    @Column(columnDefinition = "TEXT")
+    private String description;
 
     private String imageUrl;
     private String category;
@@ -111,6 +113,12 @@ public class Blog {
 	}
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
     

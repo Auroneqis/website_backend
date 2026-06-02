@@ -38,21 +38,25 @@ public class BlogService {
 		this.likeRepo = likeRepo;
 	}
 
-	// GET IMAGE URL
 	private String getImageUrl(String imageName) {
 	    if (imageName == null || imageName.isBlank()) {
 	        return null;
 	    }
 	    return "/blog-images/" + imageName;
 	}
-
-	
-	// CREATE BLOG
-	public Blog createBlog(String title, String content, String category,
-	                       String imageName, String author, String keyword) {
+	public Blog createBlog(
+	        String title,
+	        String description,
+	        String content,
+	        String category,
+	        String imageName,
+	        String author,
+	        String keyword) {
 
 	    Blog blog = new Blog();
+
 	    blog.setTitle(title);
+	    blog.setDescription(description);
 	    blog.setContent(content);
 	    blog.setCategory(category);
 	    blog.setAuthor(author);
@@ -78,9 +82,7 @@ public class BlogService {
 
 	    return blogRepo.save(blog);
 	}
-	// ===============================
-	// GET BLOG LIST (USER)
-	// ===============================
+	
 	public Page<Blog> getBlogs(int page) {
 
 	    Page<Blog> blogs = blogRepo.findByStatusOrderByCreatedAtDesc(
@@ -180,13 +182,14 @@ public class BlogService {
 	// ===============================
 	// UPDATE BLOG
 	// ===============================
-	public Blog updateBlog(Long blogId, String title, String content, String category, String keyword,
+	public Blog updateBlog(Long blogId, String title, String description, String content, String category, String keyword,
 			MultipartFile image, String author) throws Exception {
 
 		Blog blog = blogRepo.findById(blogId).orElseThrow(() -> new RuntimeException("Blog not found"));
 
 		blog.setTitle(title);
 		blog.setContent(content);
+		blog.setDescription(description);
 		blog.setCategory(category);
 		blog.setAuthor(author);
 		blog.setSlug(SlugUtil.toSlug(title));
