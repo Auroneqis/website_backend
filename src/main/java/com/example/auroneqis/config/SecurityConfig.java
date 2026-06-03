@@ -18,6 +18,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
             .requestMatchers("/blog-images/**").permitAll()
 
             .requestMatchers("/api/contact").permitAll()
+            .requestMatchers("/api/product-contact").permitAll()
             .requestMatchers("/api/admin/blog/create").permitAll()
             .requestMatchers("/api/admin/blogs").permitAll()
             .requestMatchers("/api/admin/blog/delete/**").permitAll()
